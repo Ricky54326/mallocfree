@@ -1,0 +1,10 @@
+The two tests are freetest.c and freetest2.c
+
+freetest.c tests allocating and then freeing memory between two blocks that remain allocated. The test then attempts to allocate into the newly freed memory.
+
+freetest2.c tests allocating and then freeing memory above and below a block that remains allocated. The test then attempts to allocate into the newly freed memory.
+
+Both of these tests belong in bucket for workload 2 and 3 (they work for both 2 and 3, not sure if you want to test it in 3 as well. Up to your discretion).
+
+I added some print statments at the end so that students could see if the tests succeeded.
+

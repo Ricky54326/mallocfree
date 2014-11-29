@@ -1,0 +1,37 @@
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+#include "mem.h"
+
+int main() {
+    srand(time(NULL));
+    int total_mem = 0;
+    int num_allocs = 0;
+    int size_node = 16;
+
+    // Init 50 MB
+    assert(Mem_Init(50 * 1024 * 1024) == 0);
+	   
+    printf("sizeof(Node): %d\n", size_node);
+    printf("Allocated: %d\n", 50 * 1024 * 1024);
+
+    while(1)
+    {
+        int x = rand() % 1000;
+        int num_bytes = x * 8;
+        void* ptr = NULL;
+        ptr = Mem_Alloc(num_bytes);
+        if (!ptr) break;
+        total_mem += num_bytes;
+        num_allocs++;
+    }
+
+    printf("Number of allocations: %d\n", num_allocs);
+    printf("num_allocs * size_node  = %d\n", num_allocs * size_node);
+    printf("%d\n", total_mem);
+
+    exit(0);
+}
